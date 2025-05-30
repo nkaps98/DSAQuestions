@@ -28,6 +28,10 @@ class Solution:
 # 3. Move elements in the cycle to their new positions until the cycle is complete.
 # 4. Place the starting element in its final position.
 # 5. Repeat for all cycles until the array is rotated.
+# Example:
+# Input: arr = [1, 2, 3, 4, 5], d = 2
+# Output: [3, 4, 5, 1, 2]
+
 import math
 class Solution:
     #Function to rotate an array by d elements in counter-clockwise direction. 
