@@ -7,7 +7,7 @@
 """
 
 
-# Approach: One pass solution
+# Approach: max min product tracking
 # 1. Initialize two variables, max_ and min_, to the first element of the array.
 # 2. Initialize a variable res to the first element of the array.
 # 3. Iterate through the array starting from the second element.
@@ -27,11 +27,35 @@ class Solution:
 		res = arr[0]
 		
 		for i in range(1, len(arr)):
-			temp1_1, temp1_2 = max_ * arr[i], arr[i]
-			temp2_1, temp2_2 = min_ * arr[i], arr[i]
-			max_ = max(temp1_1, temp1_2, temp2_1, temp2_2)
-			min_ = min(temp1_1, temp1_2, temp2_1, temp2_2)
+			temp1= max_ * arr[i]
+			temp2 = min_ * arr[i]
+			max_ = max(temp1, temp2, arr[i])
+			min_ = min(temp1, temp2, arr[i])
 			res = max(max_, min_, res)
 		    
+		
+		return res
+	
+
+# Appraoch 2: Travelling from both sides
+
+class Solution:
+	def maxProduct(self,arr):
+		# code here
+		res = float('-inf')
+		l2r = 1
+		r2l = 1
+		n = len(arr)
+		
+		for i in range(len(arr)):
+			
+			if l2r == 0:
+				l2r = 1
+			if r2l == 0:
+				r2l = 1
+				
+			l2r *= arr[i]
+			r2l *= arr[n-i-1]
+			res = max(res, l2r, r2l)
 		
 		return res
